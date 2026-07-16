@@ -26,9 +26,12 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .wordmark { font-size: 16px; font-weight: 700; letter-spacing: 0; text-decoration: none; }
+.header-actions { align-items: center; display: flex; gap: 24px; }
 nav { display: flex; gap: 24px; }
 nav a, footer a { color: var(--muted); font-size: 14px; text-decoration: none; }
 nav a:hover, footer a:hover, .text-link:hover { color: var(--aqua); }
+.login-link { border: 1px solid var(--ink); border-radius: 4px; font-size: 14px; font-weight: 700; padding: 8px 12px; text-decoration: none; }
+.login-link:hover { background: var(--ink); color: white; }
 
 .hero { border-bottom: 1px solid var(--line); margin: 0 auto; max-width: 1120px; padding: 112px 7vw 104px; }
 .eyebrow { color: var(--aqua); font-size: 12px; font-weight: 700; letter-spacing: 0; margin-bottom: 18px; text-transform: uppercase; }
