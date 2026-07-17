@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="120 60 820 880" role="img" aria-labelledby="title">
+  <title id="title">Pool Conductor</title>
+  <defs>
+    <mask id="open-channel" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000">
+      <rect width="1000" height="1000" fill="white" />
+      <path
+        d="M940 300H570C475 300 415 350 415 430C415 510 475 560 570 560H940"
+        fill="none"
+        stroke="black"
+        stroke-linecap="butt"
+        stroke-linejoin="round"
+        stroke-width="118"
+      />
+    </mask>
+  </defs>
+  <path
+    d="M160 100H520C755 100 900 235 900 430C900 625 750 740 520 740H370V900H160V100Z"
+    fill="#1d2a2b"
+    mask="url(#open-channel)"
+  />
+</svg>

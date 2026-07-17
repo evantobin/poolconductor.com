@@ -25,14 +25,91 @@ h1, h2, h3, p { margin-top: 0; }
   padding: 0 7vw;
 }
 
-.wordmark { font-size: 16px; font-weight: 700; letter-spacing: 0; text-decoration: none; }
+.brand-link { color: var(--ink); display: inline-flex; text-decoration: none; }
+.brand-logo { align-items: center; display: inline-flex; gap: 10px; white-space: nowrap; }
+.brand-mark { display: block; height: 32px; width: 32px; }
+.brand-name { font-size: 16px; font-weight: 700; letter-spacing: 0; }
+.brand-link:hover .brand-mark { opacity: 0.78; }
 .header-actions { align-items: center; display: flex; gap: 24px; }
 footer a { color: var(--muted); font-size: 14px; text-decoration: none; }
 footer a:hover, .text-link:hover { color: var(--aqua); }
 .login-link { border: 1px solid var(--ink); border-radius: 4px; font-size: 14px; font-weight: 700; padding: 8px 12px; text-decoration: none; }
 .login-link:hover { background: var(--ink); color: white; }
 
-.hero { border-bottom: 1px solid var(--line); margin: 0 auto; max-width: 1120px; padding: 112px 7vw 104px; }
+.hero { border-bottom: 1px solid var(--line); margin: 0 auto; max-width: 1120px; overflow: hidden; padding: 112px 7vw 104px; position: relative; }
+.hero-pool { bottom: 0; height: 52%; left: 0; position: absolute; right: 0; z-index: 0; }
+.hero-content { position: relative; z-index: 1; }
+
+.pool-water {
+  inset: 0;
+  position: absolute;
+  perspective: 550px;
+  perspective-origin: center 30%;
+  background: linear-gradient(180deg, transparent 0%, var(--aqua-pale) 20%, #d3e5e5 55%, var(--aqua-pale) 100%);
+}
+
+.pool-water::before {
+  content: '';
+  inset: 0;
+  position: absolute;
+  transform: rotateX(50deg) scaleY(2);
+  transform-origin: center top;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(24, 127, 145, 0.05) 40px,
+      rgba(24, 127, 145, 0.05) 41px,
+      transparent 41px,
+      transparent 42px
+    );
+}
+
+.pool-ripple {
+  inset: 0;
+  position: absolute;
+}
+
+.pool-ripple::before,
+.pool-ripple::after {
+  content: '';
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: -10%;
+  height: 60%;
+  border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%;
+  background: linear-gradient(180deg, transparent 0%, rgba(24, 127, 145, 0.07) 40%, rgba(24, 127, 145, 0.04) 80%, transparent 100%);
+  opacity: 0.8;
+}
+
+.pool-ripple::before { animation: pool-wave 7s ease-in-out infinite; }
+.pool-ripple::after { animation: pool-wave 9s ease-in-out infinite reverse; border-radius: 55% 45% 50% 50% / 45% 55% 50% 50%; bottom: -5%; height: 50%; }
+
+.pool-caustics {
+  inset: 0;
+  position: absolute;
+  background:
+    radial-gradient(ellipse 90px 35px at 20% 60%, rgba(255, 255, 255, 0.12) 0%, transparent 100%),
+    radial-gradient(ellipse 70px 28px at 50% 45%, rgba(255, 255, 255, 0.09) 0%, transparent 100%),
+    radial-gradient(ellipse 80px 32px at 78% 55%, rgba(255, 255, 255, 0.11) 0%, transparent 100%),
+    radial-gradient(ellipse 55px 22px at 35% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 65px 25px at 65% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  animation: caustic-shift 8s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes pool-wave {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  33% { transform: translateY(-5px) scaleY(1.06); }
+  66% { transform: translateY(3px) scaleY(0.95); }
+}
+
+@keyframes caustic-shift {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
 .eyebrow { color: var(--aqua); font-size: 12px; font-weight: 700; letter-spacing: 0; margin-bottom: 18px; text-transform: uppercase; }
 h1 { font-size: clamp(42px, 5.1vw, 68px); letter-spacing: 0; line-height: 1.04; margin-bottom: 24px; max-width: 830px; }
 h2 { font-size: clamp(31px, 3.4vw, 48px); letter-spacing: 0; line-height: 1.1; margin-bottom: 0; }
@@ -67,8 +144,15 @@ footer { align-items: center; display: flex; justify-content: space-between; mar
 @media (max-width: 720px) {
   .site-header, .hero, .content-section, footer { padding-left: 24px; padding-right: 24px; }
   .hero { padding-bottom: 74px; padding-top: 76px; }
+  .hero-pool { height: 45%; }
   .content-section { gap: 38px; grid-template-columns: 1fr; padding-bottom: 64px; padding-top: 64px; }
   .local-section { padding-left: 24px; padding-right: 24px; }
   .summary-band { justify-content: flex-start; padding-left: 24px; padding-right: 24px; }
   footer { gap: 20px; }
+}
+
+@media (max-width: 420px) {
+  .brand-logo { gap: 8px; }
+  .brand-mark { height: 28px; width: 28px; }
+  .brand-name { font-size: 15px; }
 }
