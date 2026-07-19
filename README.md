@@ -12,6 +12,7 @@ controller rather than a hardware and firmware project. Alongside local Matter
 control, the commercial experience includes:
 
 - A web dashboard for pump status, relay control, and equipment setup.
+- Daily pump scheduling so your equipment runs on your timetable, not a manual routine.
 - Historical energy, circulation, and temperature information.
 - Remote firmware updates and on-demand diagnostic logs.
 - A completed controller instead of a DIY wiring and toolchain setup.
