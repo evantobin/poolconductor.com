@@ -37,7 +37,7 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
 .login-link:hover { background: var(--ink); color: white; }
 
 .hero { border-bottom: 1px solid rgba(24,127,145,0.2); max-width: none; overflow: hidden; padding: 112px 7vw 104px; position: relative; }
-.hero-pool { bottom: 0; height: 100%; left: 0; overflow: hidden; position: absolute; right: 0; top: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(24,127,145,0.12) 0%, transparent 50%), radial-gradient(ellipse 60% 100% at 85% 50%, rgba(56,189,248,0.08) 0%, transparent 60%), linear-gradient(180deg, #0a0f14 0%, #0d1520 30%, #0f1a24 60%, #0a1018 100%); }
+.hero-pool { bottom: 0; height: 100%; left: 0; opacity: 0.6; overflow: hidden; position: absolute; right: 0; top: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(24,127,145,0.12) 0%, transparent 50%), radial-gradient(ellipse 60% 100% at 85% 50%, rgba(56,189,248,0.08) 0%, transparent 60%), linear-gradient(180deg, #0a0f14 0%, #0d1520 30%, #0f1a24 60%, #0a1018 100%); }
 .hero-pool::after { animation: pool-shimmer 4s ease-in-out infinite; background: linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.04) 20%, rgba(56,189,248,0.08) 45%, rgba(56,189,248,0.04) 70%, transparent 100%); bottom: 0; content: ''; height: 30%; left: -15%; position: absolute; right: -15%; transform: skewX(-12deg); }
 .hero-pool canvas { display: block; height: 130%; left: -5%; position: absolute; top: -10%; width: 110%; }
 @keyframes pool-shimmer { 0%, 100% { opacity: 0.4; transform: skewX(-12deg) translateX(-3%); } 50% { opacity: 0.8; transform: skewX(-12deg) translateX(3%); } }
