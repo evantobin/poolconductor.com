@@ -14,14 +14,14 @@ const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 100);
 camera.position.set(6, 0.3, 3.5);
 camera.lookAt(0, 0, 0);
 
-scene.add(new THREE.AmbientLight(0x1a3a4a, 1.2));
-const key = new THREE.DirectionalLight(0x38bdf8, 4.5);
+scene.add(new THREE.AmbientLight(0xe0f0ff, 2.5));
+const key = new THREE.DirectionalLight(0xffffff, 6.0);
 key.position.set(4, 2, 5);
 scene.add(key);
-const rim = new THREE.DirectionalLight(0x4ade80, 2.0);
+const rim = new THREE.DirectionalLight(0x38bdf8, 3.0);
 rim.position.set(-4, 1, -3);
 scene.add(rim);
-const bottom = new THREE.DirectionalLight(0x0ea5e9, 1.8);
+const bottom = new THREE.DirectionalLight(0x7dd3fc, 2.5);
 bottom.position.set(0, -2, 2);
 scene.add(bottom);
 
@@ -36,6 +36,16 @@ loader.load("/poolpump.glb", (gltf) => {
   model = gltf.scene;
   model.position.set(2.5, -0.4, 0);
   model.scale.set(2.2, 2.2, 2.2);
+  model.traverse((child) => {
+    if (child.isMesh) {
+      child.material.needsUpdate = true;
+      if (child.material.color) {
+        const hsl = {};
+        child.material.color.getHSL(hsl);
+        if (hsl.l < 0.3) child.material.color.setHSL(hsl.h, hsl.s * 0.5, 0.5);
+      }
+    }
+  });
   scene.add(model);
   resize();
 });
