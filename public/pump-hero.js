@@ -34,8 +34,9 @@ let currentY = 0;
 
 loader.load("/poolpump.glb", (gltf) => {
   model = gltf.scene;
-  model.position.set(2.5, -0.4, 0);
+  model.position.set(1.5, -0.5, 0);
   model.scale.set(2.2, 2.2, 2.2);
+  model.rotation.set(-Math.PI / 2, 0, Math.PI / 6);
   model.traverse((child) => {
     if (child.isMesh) {
       child.material.needsUpdate = true;
@@ -76,12 +77,12 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (model) {
-    model.rotation.y += 0.0005;
+    model.rotation.y += 0.0003;
 
     currentX += (targetX - currentX) * 0.01;
     currentY += (targetY - currentY) * 0.01;
-    model.rotation.x = currentY + 0.05;
-    model.rotation.y += currentX * 0.05;
+    model.rotation.z = Math.PI / 6 + currentY * 0.03;
+    model.rotation.y += currentX * 0.03;
 
     model.rotation.x += scrollY;
   }
