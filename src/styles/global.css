@@ -36,7 +36,7 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
 .login-link { border: 1px solid var(--ink); border-radius: 4px; font-size: 14px; font-weight: 700; padding: 8px 12px; text-decoration: none; }
 .login-link:hover { background: var(--ink); color: white; }
 
-.hero { border-bottom: 1px solid var(--line); overflow: hidden; padding: 112px 7vw 104px; position: relative; }
+.hero { border-bottom: 1px solid var(--line); max-width: none; overflow: hidden; padding: 112px 7vw 104px; position: relative; }
 .hero-pool { bottom: 0; height: 52%; left: 0; position: absolute; right: 0; z-index: 0; }
 .hero-content { position: relative; z-index: 1; }
 
