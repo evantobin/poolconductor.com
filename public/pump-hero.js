@@ -70,19 +70,19 @@ document.addEventListener("mousemove", (e) => {
 
 let scrollY = 0;
 window.addEventListener("scroll", () => {
-  scrollY = window.scrollY * 0.0003;
+  scrollY = window.scrollY * 0.0001;
 });
 
 function animate() {
   requestAnimationFrame(animate);
 
   if (model) {
-    model.rotation.y += 0.0003;
+    model.rotation.y += 0.0002;
 
-    currentX += (targetX - currentX) * 0.01;
-    currentY += (targetY - currentY) * 0.01;
-    model.rotation.z = Math.PI / 6 + currentY * 0.03;
-    model.rotation.y += currentX * 0.03;
+    currentX += (targetX - currentX) * 0.005;
+    currentY += (targetY - currentY) * 0.005;
+    model.rotation.z = Math.PI / 6 + currentY * 0.015;
+    model.rotation.y += currentX * 0.015;
 
     model.rotation.x += scrollY;
   }
