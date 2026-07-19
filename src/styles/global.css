@@ -39,9 +39,9 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
 .hero { border-bottom: 1px solid rgba(24,127,145,0.2); max-width: none; overflow: hidden; padding: 112px 7vw 104px; position: relative; }
 .hero-pool {
   background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(255,255,255,0.18) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 100% at 85% 50%, rgba(255,255,255,0.12) 0%, transparent 60%),
-    linear-gradient(180deg, #38bdf8 0%, #22d3ee 15%, #0ea5e9 45%, #0284c7 75%, #0369a1 100%);
+    radial-gradient(ellipse 120% 60% at 30% 0%, rgba(255,255,255,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 80% at 70% 20%, rgba(255,255,255,0.16) 0%, transparent 50%),
+    linear-gradient(180deg, #0ea5e9 0%, #38bdf8 20%, #22d3ee 40%, #0ea5e9 60%, #0284c7 80%, #0369a1 100%);
   bottom: 0;
   height: 100%;
   left: 0;
@@ -52,24 +52,26 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
   z-index: 0;
 }
 .hero-pool::before {
-  animation: pool-shimmer 4s ease-in-out infinite;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0.22) 45%, rgba(255,255,255,0.15) 70%, transparent 100%);
-  bottom: 0;
-  content: '';
-  height: 40%;
-  left: -15%;
-  position: absolute;
-  right: -15%;
-  transform: skewX(-12deg);
-}
-.hero-pool::after {
-  animation: pool-caustics 6s ease-in-out infinite;
+  animation: pool-shimmer 5s ease-in-out infinite;
   background:
-    radial-gradient(ellipse 140px 36px at 15% 40%, rgba(255,255,255,0.35) 0%, transparent 100%),
-    radial-gradient(ellipse 110px 28px at 45% 55%, rgba(255,255,255,0.28) 0%, transparent 100%),
-    radial-gradient(ellipse 120px 32px at 75% 35%, rgba(255,255,255,0.32) 0%, transparent 100%),
-    radial-gradient(ellipse 90px 22px at 30% 75%, rgba(255,255,255,0.25) 0%, transparent 100%),
-    radial-gradient(ellipse 100px 26px at 65% 60%, rgba(255,255,255,0.30) 0%, transparent 100%);
+    repeating-linear-gradient(
+      120deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(255,255,255,0.10) 80px,
+      rgba(255,255,255,0.18) 90px,
+      rgba(255,255,255,0.10) 100px,
+      transparent 120px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(255,255,255,0.08) 100px,
+      rgba(255,255,255,0.14) 110px,
+      rgba(255,255,255,0.08) 120px,
+      transparent 140px
+    );
   bottom: 0;
   content: '';
   height: 100%;
@@ -77,8 +79,36 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
   position: absolute;
   right: 0;
 }
-@keyframes pool-shimmer { 0%, 100% { opacity: 0.5; transform: skewX(-12deg) translateX(-5%); } 50% { opacity: 1; transform: skewX(-12deg) translateX(5%); } }
-@keyframes pool-caustics { 0%, 100% { opacity: 0.5; transform: scaleY(1) translateY(0); } 50% { opacity: 0.85; transform: scaleY(1.02) translateY(-4px); } }
+@keyframes pool-shimmer {
+  0%   { opacity: 0.6; transform: translateX(-3%) translateY(0); }
+  25%  { opacity: 0.9; transform: translateX(1%) translateY(-2px); }
+  50%  { opacity: 1; transform: translateX(3%) translateY(0); }
+  75%  { opacity: 0.9; transform: translateX(1%) translateY(2px); }
+  100% { opacity: 0.6; transform: translateX(-3%) translateY(0); }
+}
+.hero-pool::after {
+  animation: pool-caustics 7s ease-in-out infinite;
+  background:
+    radial-gradient(ellipse 160px 44px at 10% 30%, rgba(255,255,255,0.30) 0%, transparent 100%),
+    radial-gradient(ellipse 130px 34px at 35% 70%, rgba(255,255,255,0.24) 0%, transparent 100%),
+    radial-gradient(ellipse 150px 38px at 60% 25%, rgba(255,255,255,0.28) 0%, transparent 100%),
+    radial-gradient(ellipse 110px 28px at 80% 60%, rgba(255,255,255,0.22) 0%, transparent 100%),
+    radial-gradient(ellipse 120px 30px at 25% 50%, rgba(255,255,255,0.20) 0%, transparent 100%),
+    radial-gradient(ellipse 100px 26px at 55% 80%, rgba(255,255,255,0.18) 0%, transparent 100%),
+    radial-gradient(ellipse 140px 36px at 75% 15%, rgba(255,255,255,0.26) 0%, transparent 100%);
+  bottom: 0;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+@keyframes pool-caustics {
+  0%   { opacity: 0.55; transform: scale3d(1, 1, 1) translateY(0); }
+  33%  { opacity: 0.85; transform: scale3d(1.03, 1.02, 1) translateY(-4px); }
+  66%  { opacity: 0.75; transform: scale3d(0.98, 0.99, 1) translateY(2px); }
+  100% { opacity: 0.55; transform: scale3d(1, 1, 1) translateY(0); }
+}
 .hero-pool canvas { display: none; }
 .hero-content { color: #0c1929; position: relative; z-index: 1; }
 .hero .eyebrow { color: #0369a1; }
@@ -95,10 +125,6 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
 
 
 
-@keyframes caustic-shift {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
 .eyebrow { color: var(--aqua); font-size: 12px; font-weight: 700; letter-spacing: 0; margin-bottom: 18px; text-transform: uppercase; }
 h1 { font-size: clamp(42px, 5.1vw, 68px); letter-spacing: 0; line-height: 1.04; margin-bottom: 24px; max-width: 830px; }
 h2 { font-size: clamp(31px, 3.4vw, 48px); letter-spacing: 0; line-height: 1.1; margin-bottom: 0; }
