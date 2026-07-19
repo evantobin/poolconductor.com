@@ -14,13 +14,16 @@ const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 100);
 camera.position.set(6, 0.3, 3.5);
 camera.lookAt(0, 0, 0);
 
-scene.add(new THREE.AmbientLight(0xffffff, 2.0));
-const key = new THREE.DirectionalLight(0xffffff, 3.0);
-key.position.set(5, 3, 4);
+scene.add(new THREE.AmbientLight(0x1a3a4a, 1.2));
+const key = new THREE.DirectionalLight(0x38bdf8, 4.5);
+key.position.set(4, 2, 5);
 scene.add(key);
-const fill = new THREE.DirectionalLight(0x88bbff, 1.5);
-fill.position.set(-3, 1, -2);
-scene.add(fill);
+const rim = new THREE.DirectionalLight(0x4ade80, 2.0);
+rim.position.set(-4, 1, -3);
+scene.add(rim);
+const bottom = new THREE.DirectionalLight(0x0ea5e9, 1.8);
+bottom.position.set(0, -2, 2);
+scene.add(bottom);
 
 const loader = new GLTFLoader();
 let model = null;
