@@ -37,8 +37,10 @@ footer a:hover, .text-link:hover { color: var(--aqua); }
 .login-link:hover { background: var(--ink); color: white; }
 
 .hero { border-bottom: 1px solid var(--line); max-width: none; overflow: hidden; padding: 112px 7vw 104px; position: relative; }
-.hero-pool { bottom: 0; height: 100%; left: 0; position: absolute; right: 0; top: 0; z-index: 0; }
-.hero-pool canvas { display: block; height: 100%; width: 100%; }
+.hero-pool { bottom: 0; height: 100%; left: 0; overflow: hidden; position: absolute; right: 0; top: 0; z-index: 0; background: linear-gradient(180deg, #fbfcfc 0%, #e7f2f2 40%, #c8e0e0 65%, rgba(24,127,145,0.15) 85%, rgba(24,127,145,0.25) 100%); }
+.hero-pool::after { animation: pool-shimmer 4s ease-in-out infinite; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.14) 45%, rgba(255,255,255,0.08) 70%, transparent 100%); bottom: 0; content: ''; height: 40%; left: -15%; position: absolute; right: -15%; transform: skewX(-12deg); }
+.hero-pool canvas { display: block; height: 120%; left: 10%; position: absolute; top: -10%; width: 120%; }
+@keyframes pool-shimmer { 0%, 100% { opacity: 0.5; transform: skewX(-12deg) translateX(-3%); } 50% { opacity: 1; transform: skewX(-12deg) translateX(3%); } }
 .hero-content { position: relative; z-index: 1; }
 
 
@@ -85,7 +87,6 @@ footer { align-items: center; display: flex; justify-content: space-between; mar
 @media (max-width: 720px) {
   .site-header, .hero, .content-section, footer { padding-left: 24px; padding-right: 24px; }
   .hero { padding-bottom: 74px; padding-top: 76px; }
-  .hero-pool { height: 45%; }
   .content-section { gap: 38px; grid-template-columns: 1fr; padding-bottom: 64px; padding-top: 64px; }
   .local-section { padding-left: 24px; padding-right: 24px; }
   .summary-band { justify-content: flex-start; padding-left: 24px; padding-right: 24px; }
