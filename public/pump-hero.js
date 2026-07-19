@@ -11,8 +11,8 @@ renderer.setClearColor(0x000000, 0);
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 100);
-camera.position.set(6, 0.3, 3.5);
-camera.lookAt(0, 0, 0);
+camera.position.set(0.5, 0.8, 4);
+camera.lookAt(-0.2, -0.2, 0);
 
 scene.add(new THREE.AmbientLight(0xe0f0ff, 2.5));
 const key = new THREE.DirectionalLight(0xffffff, 6.0);
@@ -34,8 +34,8 @@ let currentY = 0;
 
 loader.load("/poolpump.glb", (gltf) => {
   model = gltf.scene;
-  model.position.set(1.5, -0.5, 0);
-  model.scale.set(2.2, 2.2, 2.2);
+  model.position.set(-0.5, 0.3, 0);
+  model.scale.set(2.0, 2.0, 2.0);
   model.rotation.set(-Math.PI / 2, 0, Math.PI / 6);
   model.traverse((child) => {
     if (child.isMesh) {
