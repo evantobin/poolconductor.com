@@ -1,6 +1,6 @@
 // Three.js pool pump hero — loaded via CDN import map
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 const canvas = document.getElementById("pump-canvas");
 if (!canvas) throw new Error("Canvas not found");
@@ -13,7 +13,6 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
 camera.position.set(0, 0.8, 5);
 
-// Lighting
 scene.add(new THREE.AmbientLight(0xffffff, 1.8));
 const key = new THREE.DirectionalLight(0xffffff, 2.5);
 key.position.set(5, 3, 4);
@@ -22,8 +21,8 @@ const fill = new THREE.DirectionalLight(0x88bbff, 1.2);
 fill.position.set(-3, 1, -2);
 scene.add(fill);
 
-const loader = new THREE.GLTFLoader();
-let model: THREE.Group | null = null;
+const loader = new GLTFLoader();
+let model = null;
 let targetY = 0;
 let targetX = 0;
 let currentY = 0;
@@ -37,7 +36,8 @@ loader.load("/poolpump.glb", (gltf) => {
 });
 
 function resize() {
-  const container = canvas.parentElement!;
+  const container = canvas.parentElement;
+  if (!container) return;
   const w = container.clientWidth;
   const h = container.clientHeight;
   renderer.setSize(w, h, false);
@@ -61,16 +61,13 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (model) {
-    // Base auto-rotation
     model.rotation.y += 0.003;
 
-    // Mouse parallax — smoothly follow cursor
     currentX += (targetX - currentX) * 0.05;
     currentY += (targetY - currentY) * 0.05;
     model.rotation.x = currentY + 0.1;
     model.rotation.y += currentX * 0.3;
 
-    // Scroll tilt
     model.rotation.x += scrollY * 0.5;
   }
 
