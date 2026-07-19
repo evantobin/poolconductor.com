@@ -10,8 +10,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setClearColor(0x000000, 0);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(25, 1, 0.1, 100);
-camera.position.set(3.5, 0.5, 3.8);
+const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 100);
+camera.position.set(6, 0.3, 3.5);
 camera.lookAt(0, 0, 0);
 
 scene.add(new THREE.AmbientLight(0xffffff, 2.0));
@@ -31,8 +31,8 @@ let currentY = 0;
 
 loader.load("/poolpump.glb", (gltf) => {
   model = gltf.scene;
-  model.position.set(0.8, -0.3, 0);
-  model.scale.set(1.8, 1.8, 1.8);
+  model.position.set(2.5, -0.4, 0);
+  model.scale.set(2.2, 2.2, 2.2);
   scene.add(model);
   resize();
 });
@@ -63,12 +63,12 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (model) {
-    model.rotation.y += 0.001;
+    model.rotation.y += 0.0005;
 
-    currentX += (targetX - currentX) * 0.02;
-    currentY += (targetY - currentY) * 0.02;
-    model.rotation.x = currentY + 0.1;
-    model.rotation.y += currentX * 0.1;
+    currentX += (targetX - currentX) * 0.01;
+    currentY += (targetY - currentY) * 0.01;
+    model.rotation.x = currentY + 0.05;
+    model.rotation.y += currentX * 0.05;
 
     model.rotation.x += scrollY;
   }
