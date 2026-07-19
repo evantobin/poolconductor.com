@@ -18,9 +18,7 @@ const controllerRepository = "https://github.com/evantobin/matter-pool-controlle
   <main>
     <section class="hero">
       <div class="hero-pool" aria-hidden="true">
-        <div class="pool-water"></div>
-        <div class="pool-ripple"></div>
-        <div class="pool-caustics"></div>
+        <canvas id="pump-canvas"></canvas>
       </div>
       <div class="hero-content">
         <p class="eyebrow">Local-first Matter pool control</p>
@@ -104,6 +102,8 @@ const controllerRepository = "https://github.com/evantobin/matter-pool-controlle
       <a class="button" href={controllerRepository}>Follow the project</a>
     </section>
   </main>
+
+  <script type="module" src="/pump-hero.js" async></script>
 
   <footer>
     <a class="brand-link" href="/" aria-label="Pool Conductor home">

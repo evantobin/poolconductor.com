@@ -22,6 +22,14 @@ const {
     <link rel="icon" type="image/svg+xml" href="/brand/pool-conductor-mark.svg" />
     <link rel="mask-icon" href="/brand/pool-conductor-mark.svg" color="#1d2a2b" />
     <title>{title}</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.174.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.174.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body>
     <slot />
